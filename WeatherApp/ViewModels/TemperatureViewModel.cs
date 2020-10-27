@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WeatherApp.Commands;
+using WeatherApp.Models;
 using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
@@ -14,16 +15,16 @@ namespace WeatherApp.ViewModels
 
         public DelegateCommand<string> GetTempCommand { get; set; }
 
-        public Object CurrentTemp { get; set; }
+        public TemperatureModel CurrentTemp { get; set; }
 
         public TemperatureViewModel()
         {
             GetTempCommand = new DelegateCommand<string>(GetTempData);
         }
 
-        private void GetTempData(string obj)
+        private async void GetTempData(string obj)
         {
-            CurrentTemp = TemperatureService.GetTempAsync();
+            CurrentTemp = await TemperatureService.GetTempAsync();
         }
 
         public void SetTemperatureService(ITemperatureService IT)

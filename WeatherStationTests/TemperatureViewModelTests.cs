@@ -50,7 +50,7 @@ namespace WeatherStationTests
         [InlineData(32, 0)]
         [InlineData(-40, -40)]
         [InlineData(-4, -20)]
-        [InlineData(0, -17.8)]
+        [InlineData(0, -17.8f)]
         [InlineData(98.6, 37)]
         [InlineData(212, 100)]
         public void FahrenheitInCelsius_AlwaysReturnGoodValue(double F, double expected)
@@ -58,9 +58,10 @@ namespace WeatherStationTests
             // Arrange
 
             // Act       
-
+            var actual = _sut.FahrenheitinCelsius(F);
             // Assert
 
+            Assert.Equal(expected,actual,1);
             /// TODO : git commit -a -m "T02 FahrenheitInCelsius_AlwaysReturnGoodValue : Done"
         }
 

@@ -11,5 +11,10 @@ namespace WeatherApp.ViewModels
         {
             return c * (9.0f / 5.0f) + 32;
         }
+
+        public double FahrenheitinCelsius(double f)
+        {
+            return (f - 32) * 5.0f / 9.0f;
+        }
     }
 }

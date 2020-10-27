@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WeatherApp.Commands;
+using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
 {
@@ -9,9 +10,15 @@ namespace WeatherApp.ViewModels
     {
         /// TODO : Ajoutez le code nécessaire pour réussir les tests et répondre aux requis du projet
         /// 
+        public ITemperatureService TemperatureService;
+
         public DelegateCommand<string> GetTempCommand { get; }
 
-        
+
+        public void SetTemperatureService(ITemperatureService IT)
+        {
+            TemperatureService = IT;
+        }
 
         public double CelsiusinFahrenheit(double c)
         {
@@ -21,6 +28,18 @@ namespace WeatherApp.ViewModels
         public double FahrenheitinCelsius(double f)
         {
             return (f - 32) * 5.0f / 9.0f;
+        }
+
+        public bool CanGetTemp()
+        {
+            if(TemperatureService == null)
+            {
+                return false;
+            }
+           
+            return true;
+          
+            
         }
     }
 }

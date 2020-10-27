@@ -12,8 +12,19 @@ namespace WeatherApp.ViewModels
         /// 
         public ITemperatureService TemperatureService;
 
-        public DelegateCommand<string> GetTempCommand { get; }
+        public DelegateCommand<string> GetTempCommand { get; set; }
 
+        public Object CurrentTemp { get; set; }
+
+        public TemperatureViewModel()
+        {
+            GetTempCommand = new DelegateCommand<string>(GetTempData);
+        }
+
+        private void GetTempData(string obj)
+        {
+            CurrentTemp = TemperatureService.GetTempAsync();
+        }
 
         public void SetTemperatureService(ITemperatureService IT)
         {

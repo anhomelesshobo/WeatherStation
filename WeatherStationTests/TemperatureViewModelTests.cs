@@ -73,11 +73,11 @@ namespace WeatherStationTests
         public void GetTempCommand_ExecuteIfNullService_ShouldThrowNullException()
         {
             // Arrange
-
+            TemperatureViewModel Temp = null;
             // Act       
 
             // Assert
-
+            Assert.Throws<NullReferenceException>(() => Temp.GetTempCommand);
             /// TODO : git commit -a -m "T03 GetTempCommand_ExecuteIfNullService_ShouldThrowNullException : Done"
         }
 
